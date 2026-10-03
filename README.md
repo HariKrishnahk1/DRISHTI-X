@@ -1,253 +1,291 @@
-# DRISHTI-X — Defence AI Vision Integrity & Assurance Platform
+<div align="center">
 
-**Problem Statement ID:** SIH26228  
-**Title:** Trustworthy Computer Vision Integrity Assurance for Data, Models and Inference Outputs in Multi-Contributor Pipelines  
-**Organization:** Ministry of Defence  
-**Department:** Indian Army / DGIS  
-**Theme:** Blockchain & Cybersecurity  
-**Mode:** Air-Gapped / Fully Local (Zero Cloud or External API Dependencies)
+  <img src="frontend/public/drishti_logo.png" alt="DRISHTI-X Logo" width="130" />
+
+  # 🛡️ DRISHTI-X
+  ### **Trustworthy Defence Computer Vision Integrity & Cryptographic Assurance Platform**
+
+  [![SIH 2024](https://img.shields.io/badge/Smart%20India%20Hackathon-SIH26228-FF9933?style=for-the-badge&logo=shield)](https://github.com/HariKrishnahk1/DRISHTI-X)
+  [![Ministry of Defence](https://img.shields.io/badge/Ministry%20of%20Defence-Indian%20Army%20%2F%20DGIS-138808?style=for-the-badge&logo=target)](https://github.com/HariKrishnahk1/DRISHTI-X)
+  [![Air Gapped](https://img.shields.io/badge/Air--Gapped-100%25%20Local%20%26%20Offline-00E5FF?style=for-the-badge&logo=lock)](https://github.com/HariKrishnahk1/DRISHTI-X)
+  [![Next.js 14](https://img.shields.io/badge/Frontend-Next.js%2014-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+  [![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20Python-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+  [![Ed25519](https://img.shields.io/badge/Crypto-Ed25519%20%2B%20SHA--256-7928CA?style=for-the-badge&logo=hyperledger)](https://github.com/HariKrishnahk1/DRISHTI-X)
+
+  <p align="center">
+    <strong>Zero External Cloud APIs • Bit-Exact Cryptographic Verification • Explainable AI Risk Scores • Tamper-Evident Audit Ledgers</strong>
+  </p>
+
+  [Explore Architecture](#-system-architecture) •
+  [Key Capabilities](#-the-four-pillars-of-assurance) •
+  [Quick Start Guide](#-quick-start-run-locally-in-2-minutes) •
+  [Live Demo Walkthrough](#-evaluator--judge-walkthrough-guide) •
+  [The Team](#-mission-contributors)
+
+</div>
 
 ---
 
-## 1. Executive Summary
+## 🌟 Why DRISHTI-X?
 
-**DRISHTI-X** is an end-to-end mission-critical cyber assurance and integrity verification platform designed for computer vision pipelines deployed in tactical defence environments.
+In tactical military environments, an AI vision model making target identification or border reconnaissance decisions **cannot simply be trusted on blind faith**. 
 
-Rather than providing a simplistic binary YES/NO answer, DRISHTI-X produces **cryptographically bound evidence, explainable risk scores, detector confidence, severity levels, coverage boundaries, and recommended dispositions**:
-* `ACCEPT`
-* `REVIEW`
-* `QUARANTINE`
+When drone camera feeds, reconnaissance satellite imagery, and deep learning weights come from multiple field units, contractor vendors, and allied reconnaissance divisions, modern pipelines face acute cyber-physical threats:
+* 🪤 **Trojan Backdoors:** Hidden triggers in training data that cause a model to mistake a tank for an ambulance when a small patch appears.
+* 🔄 **Model Swaps & Supply Chain Tampering:** Unauthorized weight modifications or substitute backbones slipped into deployment.
+* ✍️ **Tampered Predictions:** Maliciously altered classification outputs in intelligence databases.
+* 🌀 **Distributional Drift:** Environmental fog or snow blinding models without warning.
+
+> [!IMPORTANT]
+> **DRISHTI-X does not give a naive, black-box pass/fail.**  
+> It constructs **immutable, bit-exact cryptographic evidence bundles, explainable contributor risk indices, and actionable operational dispositions**:
+>
+> 🟢 **`ACCEPT`** — Mathematically certified & baseline verified  
+> 🟡 **`REVIEW`** — Distributional anomaly requiring human analyst review  
+> 🔴 **`QUARANTINE`** — Cryptographic mismatch or backdoor trigger detected; isolated immediately
 
 ---
 
-## 2. System Architecture
+## 🏛️ System Architecture
 
+```mermaid
+graph TD
+    classDef input fill:#111827,stroke:#00E5FF,stroke-width:2px,color:#fff;
+    classDef core fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff;
+    classDef crypto fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#fff;
+    classDef output fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fff;
+
+    A[🛰️ Multi-Contributor Recon Imagery] --> B[Training-Data Integrity Engine]:::core
+    C[📦 Vendor Deep Learning Weights] --> D[Model Integrity Analyzer]:::core
+    E[🎯 Operational Inference Stream] --> F[Cryptographic Provenance Engine]:::crypto
+
+    B --> G[Distribution Shift Analyzer]:::core
+    D --> G
+    F --> G
+
+    G --> H[⚖️ Unified Assurance Engine]:::core
+    H --> I[🚨 Analyst Governance Portal]:::output
+
+    I -->|🟢 Verified Nominal| J[ACCEPT]:::crypto
+    I -->|🟡 Anomaly Detected| K[REVIEW]:::output
+    I -->|🔴 Cryptographic Failure| L[QUARANTINE]:::output
+
+    H --> M[(⛓️ Tamper-Evident SHA-256 Audit Trail)]:::crypto
 ```
-                DRISHTI-X
-                    |
-    +---------------+---------------+
-    |               |               |
- DATASET          MODEL         INFERENCE
-    |               |               |
-    v               v               v
-Data Integrity  Model Integrity   Provenance
-    |               |               |
-    +---------------+---------------+
-                    |
-                    v
-            Distribution Shift
-                    |
-                    v
-            ASSURANCE ENGINE
-                    |
-    +---------------+---------------+
-    |               |               |
- Evidence         Risk           Coverage
-    |               |               |
-    +---------------+---------------+
-                    |
-                    v
-             ANALYST REVIEW
-                    |
-    +---------------+---------------+
-    |               |               |
- ACCEPT          REVIEW        QUARANTINE
-    |               |               |
-    +---------------+---------------+
-                    |
-                    v
-            ASSURANCE REPORT
-                    |
-                    v
-          TAMPER-EVIDENT AUDIT
-```
 
 ---
 
-## 3. Technology Stack
+## ⚡ The Four Pillars of Assurance
 
-* **Frontend:** Next.js 14, TypeScript (Strict Mode), Tailwind CSS, Lucide Icons (Dark Mission Control Aesthetics).
-* **Backend:** FastAPI, Python, SQLAlchemy, Pydantic v2, PyJWT.
-* **Computer Vision & ML Engines:** OpenCV (`opencv-contrib-python`), Scikit-learn, Scipy, ONNX Runtime (`onnxruntime`), PyTorch (`torch`).
-* **Cryptographic Engine:** `cryptography` (Ed25519 digital signatures, SHA-256 digests, PBKDF2 key derivation).
-* **Database:** PostgreSQL (with embedded SQLite fallback for turnkey local execution).
+<table>
+  <tr>
+    <td width="50%">
+      <h3>1. 🔍 Training-Data Integrity</h3>
+      <ul>
+        <li><b>Trigger Anomaly Detector:</b> Multi-scale localized patch cross-correlation & high-frequency spatial residual analysis.</li>
+        <li><b>Perceptual Duplicate Flooding:</b> Difference perceptual hashing (<b>dHash</b>) & color histogram correlation to flag synthetic clone flooding.</li>
+        <li><b>Label Dissonance:</b> Class centroid variance to catch poisoned annotation labels.</li>
+        <li><b>Contributor Risk Index:</b> Explainable attribution of risk back to specific reconnaissance sources.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <h3>2. 🧬 Model Supply Chain Defense</h3>
+      <ul>
+        <li><b>Cryptographic Substitution Detection:</b> Instant SHA-256 comparison against certified baseline military registries.</li>
+        <li><b>8-Pattern Behavioral Battery:</b> Synthetic defence reference battery that fingerprints activation distributions.</li>
+        <li><b>Trojan Sensitivity Scans:</b> Controlled localized perimeter perturbation searching for prediction-flip anomalies.</li>
+        <li><b>Multi-Engine Adapters:</b> Native support for both <b>ONNX Runtime</b> and <b>PyTorch / TorchScript</b>.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>3. 🔐 Cryptographic Inference Provenance</h3>
+      <ul>
+        <li><b>7-Point Immutable Binding:</b> Binds Input Digest + Model Hash + Preprocessing Config + Output Hash + Nonce + Sequence # + Timestamp.</li>
+        <li><b>Ed25519 Digital Signatures:</b> Asymmetric RFC 8032 digital signatures generated on local secure hardware.</li>
+        <li><b>Instant Tamper Detection:</b> Altering a single bit of prediction data immediately yields <code>INTEGRITY_FAILURE</code>.</li>
+        <li><b>Replay Guard:</b> Sequence counter tracking to thwart replay attacks.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <h3>4. ⛓️ Tamper-Evident Audit Ledger</h3>
+      <ul>
+        <li><b>Chained SHA-256 Events:</b> Block-chained structure where each event's digest mathematically binds the prior block:
+          $$\text{Hash}_n = \text{SHA-256}(\text{Event}_n \,\|\, \text{Hash}_{n-1})$$
+        </li>
+        <li><b>Retroactive Tamper Detection:</b> Any unauthorized log modification breaks the entire chain continuity.</li>
+        <li><b>Interactive Simulation:</b> Built-in red-team testing tools to simulate tampering and verify detection.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 4. Key Functional Modules
+## 🛠️ Technology Stack
 
-### 4.1 Training-Data Integrity Analyzer
-* **Trigger Pattern Candidate Search:** Multi-scale localized patch cross-correlation & high-frequency spatial residual analysis.
-* **Label Flipping & Dissonance:** Class centroid variance and cross-entropy dissonance to detect mislabeled or poisoned instances.
-* **Near-Duplicate Flooding:** Difference perceptual hashing (dHash) & color channel histogram correlation to detect synthetic clone flooding.
-* **Out-of-Distribution (OOD):** PCA projection and Isolation Forest. Labeled explicitly as *"Distributional anomaly — requires analyst review"*.
-* **Explainable Contributor Risk:** Transparent breakdown of signal contributions to the source risk score.
+<div align="center">
 
-### 4.2 Model Integrity Analyzer
-* **Cryptographic Substitution Detection:** SHA-256 comparison against registered baseline specification. Flags `MODEL SUBSTITUTION / VERSION MISMATCH`.
-* **Behavioral Fingerprinting:** Standardized 8-pattern synthetic defence reference battery measuring probability distribution deviation.
-* **Backdoor-Like Behavioral Indicator:** Tests localized perimeter perturbation sensitivity to detect prediction flip convergence.
-* **Model Adapters:** ONNX (`ONNXModelAdapter`) and PyTorch/TorchScript (`PyTorchModelAdapter`).
+| Layer | Technologies Used | Purpose |
+| :--- | :--- | :--- |
+| **Frontend UI** | `Next.js 14` • `React 18` • `Tailwind CSS` • `Lucide Icons` | Dark tactical mission-control dashboard with real-time Threat Radar |
+| **Backend API** | `FastAPI` • `Python 3` • `SQLAlchemy` • `Pydantic v2` | Fully asynchronous, air-gapped REST assurance microservices |
+| **Computer Vision** | `OpenCV` • `Scikit-learn` • `SciPy` | Perceptual hashing (dHash), spectral residual cross-correlation |
+| **AI / Deep Learning** | `ONNX Runtime` • `PyTorch / TorchScript` | Local inference, behavioral battery activation, perturbation scans |
+| **Cryptography** | `Ed25519 (RFC 8032)` • `SHA-256` • `PBKDF2` • `PyJWT` | Hardware-grade digital signing, multi-hash bundles, audit chaining |
+| **Database** | `SQLite` *(local air-gapped)* • `PostgreSQL` *(scalable)* | Structured persistence with cryptographic integrity constraints |
 
-### 4.3 Cryptographic Inference Provenance
-* **Binding Bundle:** Binds Input Image Hash + Model Hash + Config Hash + Output Hash + Timestamp + Nonce + Sequence #.
-* **Digital Signatures:** Signed with an asymmetric **Ed25519 (RFC 8032)** private key.
-* **Tamper Verification:** Bit-level re-computation of digests to immediately detect modified predictions or replayed packets.
-
-### 4.4 Distribution Shift Analyzer
-* Uses the **Wasserstein Distance** on 6-DoF color-texture moments and Canny edge integrals.
-* Distinguishes benign **OPERATIONAL DRIFT** (sensor variance, illumination, weather) from **SUSPICIOUS MANIPULATION INDICATORS** (unnatural high-frequency structural alterations without environmental illumination shifts).
-
-### 4.5 Tamper-Evident Audit Trail
-* Block-chained SHA-256 cryptographic sequence where each event current hash binds the previous block digest:
-  $$\text{Hash}_n = \text{SHA-256}(\text{Event}_n \,\|\, \text{Hash}_{n-1})$$
-* Automated and manual audit chain integrity verification.
+</div>
 
 ---
 
-## 5. Quick Start (Turnkey Local Execution)
+## 🚀 Quick Start (Run Locally in 2 Minutes)
 
-### Step 1: Clone and Setup Workspace
+### **Prerequisites**
+* Python 3.10+
+* Node.js 18+ and npm
+* Git
+
 ```bash
-git clone <repo-url> drishti-x
-cd drishti-x
-```
+# 1. Clone the repository
+git clone https://github.com/HariKrishnahk1/DRISHTI-X.git
+cd DRISHTI-X
 
-### Step 2: Install Backend Dependencies
-```bash
+# 2. Setup Backend Dependencies
 pip install -r backend/requirements.txt
-```
 
-### Step 3: Install Frontend Dependencies
-```bash
+# 3. Setup Frontend Dependencies
 cd frontend
 npm install
-npm run build
 cd ..
-```
 
-### Step 4: Seed Demonstration Environment
-Generates clean and contaminated datasets, compiles demo ONNX and PyTorch models, creates initial inferences, and generates audit chains:
-```bash
+# 4. Seed Demonstration Data & Certified Models
 python scripts/seed_demo.py
 ```
 
-### Step 5: Start Servers
-**Terminal 1 (Backend - FastAPI):**
+### **Start the Platform**
+
 ```bash
-python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+# Terminal 1: Launch FastAPI Backend Engine (Port 8000)
+python run_backend.py
 ```
 
-**Terminal 2 (Frontend - Next.js):**
 ```bash
+# Terminal 2: Launch Next.js Mission Control (Port 3000)
 cd frontend
 npm run dev
 ```
 
-Open your browser to: **`http://localhost:3000`**
+🌐 Open your browser and navigate to: **`http://localhost:3000`**  
+📖 Interactive Swagger API Docs: **`http://127.0.0.1:8000/docs`**
 
 ---
 
-## 6. Docker Deployment (Optional)
+## 🪖 Role-Based Access Control (RBAC) Accounts
 
-To start the complete platform with PostgreSQL, FastAPI backend, and Next.js frontend:
-```bash
-docker-compose up --build
-```
-* Frontend: `http://localhost:3000`
-* Backend API & OpenAPI Docs: `http://localhost:8000/docs`
-* PostgreSQL: `localhost:5432`
+DRISHTI-X includes pre-configured defence accounts with tiered operational scopes. On the login page, you can simply click any role card for **one-click authentication**:
 
----
-
-## 7. Role-Based Access Control (RBAC) Accounts
-
-The system includes pre-configured defence accounts with different permissions:
-
-| Call-Sign / Username | Role | Password | Operational Scope |
+| Call-Sign / Username | Password | Role | Military Scope |
 | :--- | :--- | :--- | :--- |
-| `defence_commander` | `DEFENCE` | `Password123!` | Complete pipeline visibility, risk oversight & approvals |
-| `lead_analyst` | `ANALYST` | `Password123!` | Integrity scans, quarantine workflow & assurance reports |
-| `bharat_vendor` | `VENDOR` | `Password123!` | Model registry upload & verification reports |
-| `field_contributor` | `CONTRIBUTOR` | `Password123!` | Reconnaissance dataset upload & own submissions |
-| `cag_auditor` | `AUDITOR` | `Password123!` | Tamper-evident audit chain & compliance validation |
+| `defence_commander` | `Password123!` | `DEFENCE` | 🎖️ Complete pipeline visibility, risk oversight, approvals & clearance |
+| `lead_analyst` | `Password123!` | `ANALYST` | 🔬 Deep integrity scans, forensic inspection & disposition governance |
+| `bharat_vendor` | `Password123!` | `VENDOR` | 🏢 Model registry upload, baseline verification & compliance reports |
+| `field_contributor` | `Password123!` | `CONTRIBUTOR` | 🛰️ Reconnaissance dataset uploads and source tracking |
+| `cag_auditor` | `Password123!` | `AUDITOR` | ⚖️ Tamper-evident audit chain inspection & compliance validation |
 
 ---
 
-## 8. Judge / Evaluator Walkthrough Guide
+## 🎯 Evaluator & Judge Walkthrough Guide
 
-DRISHTI-X is built so evaluators can test every major defence assurance capability locally:
+Here is a 5-step test script to evaluate all major defence capabilities locally:
 
-1. **Login:** Go to `/login` and click **"Defence Commander"** or **"Lead Assurance Analyst"** for instant authentication.
-2. **Dashboard (`/dashboard`):** Review the KPI cards, pipeline status, critical evidence feed, and cryptographic audit validity.
-3. **Dataset Integrity (`/datasets`):**
-   * Inspect `RADAR_EO_DUPLICATE_FLOODED` and `TACTICAL_ARMOR_TRIGGER_ANOMALY`.
-   * Click **"ANALYZE"** to execute real perceptual hashing and backdoor pattern searches.
-   * View the explainable **Contributor Source Risk** breakdown and sample inspection grid.
-4. **Model Substitution & Fingerprint (`/models`):**
-   * Inspect `SUSPECT_SURVEILLANCE_BACKBONE` flagged with **"SUBSTITUTION DETECTED"** (observed hash does not match expected baseline).
-   * Click into details to inspect the 8-pattern reference battery behavioral fingerprint.
-5. **Inference Provenance & Tamper Demonstration (`/inference`):**
-   * Select a model, choose an image, and click **"RUN & SIGN INFERENCE"**.
-   * Observe the generated SHA-256 bindings, nonce, sequence #, and Ed25519 signature.
-   * Click **"TAMPER TEST"** on any record to maliciously alter the stored prediction label.
-   * Click **"VERIFY"** and observe instant cryptographic detection with `INTEGRITY_FAILURE`!
-   * Click **"REPLAY TEST"** and observe instant detection of nonce/sequence replay!
-6. **Distribution Shift (`/shift-analysis`):**
-   * Compare `SURVEILLANCE_EO_CLEAN_V1` against `HIGH_ALTITUDE_SNOW_DRIFT`.
-   * Review the Wasserstein divergence and distinction between *Operational Drift* and *Suspicious Manipulation*.
-7. **Analyst Governance & Quarantine Workflow:**
-   * On any flagged asset, click **"DISPOSITION"** and select **"QUARANTINE"**.
-   * Enter a formal justification reason and submit.
-   * Notice the status updates immediately and an audit event is registered in the cryptographic chain.
-8. **Assurance Report (`/reports`):**
-   * Open any formal report to inspect the military-grade layout, Problem Statement ID: SIH26228, Indian Army branding, and coverage matrix.
-   * Click **"VERIFY REPORT HASH"** to verify the SHA-256 integrity of the document.
-   * Download the complete report as JSON or print to PDF.
-9. **Tamper-Evident Audit Trail (`/audit`):**
-   * Click **"VERIFY AUDIT CHAIN"** to confirm all chained SHA-256 blocks are valid.
-   * Click **"SIMULATE AUDIT TAMPERING"** to inject a byte alteration into an earlier event.
-   * Click **"VERIFY AUDIT CHAIN"** again to observe instant detection of the compromised block!
+1. **Mission Control Dashboard (`/dashboard`):**  
+   Log in as **Defence Commander**. Observe the real-time Threat Radar, overall pipeline assurance grade, active quarantine flags, and audit validity.
+2. **Dataset Backdoor & Duplicate Flooding (`/datasets`):**  
+   Click into `TACTICAL_ARMOR_TRIGGER_ANOMALY`. Click **"Run Integrity Scan"** to watch the spatial residual cross-correlation uncover hidden Trojan triggers. Inspect the explainable **Contributor Source Risk** breakdown.
+3. **Model Substitution Detection (`/models`):**  
+   Inspect `SUSPECT_SURVEILLANCE_BACKBONE`. Observe the red **"SUBSTITUTION DETECTED"** banner showing exact deviation between the certified expected hash and the observed file hash. Review the 8-pattern behavioral battery graph.
+4. **Cryptographic Provenance & Tamper Demonstration (`/inference`):**  
+   * Select a model, pick an image, and click **"RUN & SIGN INFERENCE"**. Observe the Ed25519 digital signature and 7-point cryptographic binding.  
+   * Click **"TAMPER TEST"** to simulate an adversary modifying the stored classification on disk.  
+   * Click **"RE-VERIFY PROVENANCE"** and watch the system instantly flag **`INTEGRITY_FAILURE`**!
+5. **Tamper-Evident Audit Trail (`/audit`):**  
+   Click **"VERIFY AUDIT INTEGRITY"** to confirm mathematical continuity. Then click **"SIMULATE AUDIT TAMPERING"** to simulate an insider changing an old log entry, and see the audit chain catch the exact compromised block.
 
 ---
 
-## 9. Reproducible Scenario Scripts
+## 👥 Mission Contributors
 
-The `scripts/` directory provides standalone command-line tools for testing:
-* `python scripts/inject_duplicate_samples.py` — Injects near-duplicate clones into a dataset.
-* `python scripts/inject_label_anomaly.py` — Inverts annotation labels to simulate label poisoning.
-* `python scripts/generate_ood_samples.py` — Produces synthetic out-of-distribution anomaly samples.
-* `python scripts/create_model_fingerprint.py` — Evaluates model predictions across the reference battery.
-* `python scripts/create_inference_record.py` — Generates a signed Ed25519 provenance record.
-* `python scripts/tamper_inference_record.py` — Injects prediction alterations and verifies cryptographic detection.
-* `python scripts/replay_inference_record.py` — Simulates nonce replay attacks.
-* `python scripts/verify_audit_chain.py` — Verifies continuity of the cryptographic audit chain.
+This project was built with dedicated ownership across six key engineering domains:
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/HariKrishnahk1">
+        <img src="https://avatars.githubusercontent.com/u/HariKrishnahk1?v=4" width="80px;" alt="Hari Krishna"/><br />
+        <sub><b>Hari Krishna</b></sub>
+      </a><br />
+      <small><code>HariKrishnahk1</code></small><br />
+      <sub>👑 System Lead<br />Cryptographic Engine & Provenance</sub>
+    </td>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/naturehari">
+        <img src="https://avatars.githubusercontent.com/u/naturehari?v=4" width="80px;" alt="Nature Hari"/><br />
+        <sub><b>Nature Hari</b></sub>
+      </a><br />
+      <small><code>naturehari</code></small><br />
+      <sub>🔍 Computer Vision<br />Data Integrity & Trigger Search</sub>
+    </td>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/Divya0202941">
+        <img src="https://avatars.githubusercontent.com/u/Divya0202941?v=4" width="80px;" alt="Divya"/><br />
+        <sub><b>Divya</b></sub>
+      </a><br />
+      <small><code>Divya0202941</code></small><br />
+      <sub>🧬 Model Defense<br />Behavioral Battery & Adapters</sub>
+    </td>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/deepikadp30">
+        <img src="https://avatars.githubusercontent.com/u/deepikadp30?v=4" width="80px;" alt="Deepika"/><br />
+        <sub><b>Deepika</b></sub>
+      </a><br />
+      <small><code>deepikadp30</code></small><br />
+      <sub>💻 Mission Control UI<br />Frontend Architecture & Radar</sub>
+    </td>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/kumaranbk48-code">
+        <img src="https://avatars.githubusercontent.com/u/kumaranbk48-code?v=4" width="80px;" alt="Bharathkumaran"/><br />
+        <sub><b>Bharathkumaran</b></sub>
+      </a><br />
+      <small><code>kumaranbk48-code</code></small><br />
+      <sub>🗄️ Database & RBAC<br />Security & Ingestion Services</sub>
+    </td>
+    <td align="center" width="16.6%">
+      <a href="https://github.com/gowsalyaveerappan01-aids">
+        <img src="https://avatars.githubusercontent.com/u/gowsalyaveerappan01-aids?v=4" width="80px;" alt="Gowsalya"/><br />
+        <sub><b>Gowsalya</b></sub>
+      </a><br />
+      <small><code>gowsalyaveerappan01-aids</code></small><br />
+      <sub>📈 Distribution Shift<br />Assurance QA & Deployment</sub>
+    </td>
+  </tr>
+</table>
+</div>
 
 ---
 
-## 10. Unit Testing
+## 📜 Problem Statement Attribution
 
-Execute the automated test suite covering authentication, RBAC, cryptography, digital signatures, audit chain integrity, and risk aggregation:
-```bash
-python -m pytest tests/test_drishti_assurance.py -v
-```
-
----
-
-## 11. Assurance Coverage & Limitations
-
-| Vector | Coverage | Limitations / Boundary |
-| :--- | :--- | :--- |
-| Dataset Integrity | `SUPPORTED` | Detects rigid spatial patterns, duplicates, and centroid skew. Imperceptible clean-label perturbation requires formal training-time bounds. |
-| Model Integrity | `SUPPORTED` | Detects binary substitution, version divergence, and activation drift on reference batteries. White-box weight inversion is required for latent trojan verification. |
-| Inference Provenance | `SUPPORTED` | Bit-exact cryptographic verification of outputs and parameters via Ed25519. Guarantees provenance; does not measure tactical ground truth. |
-| Distribution Shift | `SUPPORTED` | Wasserstein metric on color-texture moments. Specialized radar or hyperspectral sensors require custom spectral band adapters. |
-| Audit Trail | `SUPPORTED` | Cryptographic SHA-256 chain guarantees detection of retroactive log alterations. |
-| Zero-Day Attacks | `NOT COVERED` | Unmodeled threats outside defined statistical and cryptographic models require human red-teaming. |
+> **Problem Statement ID:** SIH26228  
+> **Organization:** Ministry of Defence, Government of India  
+> **Department:** Indian Army / Directorate General of Information Systems (DGIS)  
+> **Theme:** Blockchain, Cybersecurity & Trustworthy AI  
+> **Operational Mandate:** Secure Air-Gapped Verification for Edge and Command Workstations
 
 ---
 
-## 12. Ministry of Defence Attribution
-
-Developed in response to **Problem Statement ID: SIH26228**, Ministry of Defence / Indian Army / DGIS.  
-Designed for secure, air-gapped deployment on local edge processing nodes and mission control workstations.
+<div align="center">
+  <sub>Engineered with precision for National Defence & Sovereign AI Integrity 🇮🇳</sub>
+</div>
