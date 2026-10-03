@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX, SkipForward, Shield, Radio, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, SkipForward } from 'lucide-react';
 
 interface StartupVideoProps {
   onComplete?: () => void;
@@ -13,16 +13,6 @@ export default function StartupVideo({ onComplete }: StartupVideoProps) {
   const [isFading, setIsFading] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState('00:00');
-  const [duration, setDuration] = useState('00:10');
-
-  const formatTime = (secs: number) => {
-    if (isNaN(secs) || secs < 0) return '00:00';
-    const m = Math.floor(secs / 60);
-    const s = Math.floor(secs % 60);
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  };
 
   const handleDismiss = () => {
     setIsFading(true);
@@ -89,30 +79,6 @@ export default function StartupVideo({ onComplete }: StartupVideoProps) {
           video.play().catch((e) => console.error('[DRISHTI-X] Playback error:', e));
         });
     }
-
-    const handleTimeUpdate = () => {
-      if (video) {
-        const cur = video.currentTime;
-        const dur = video.duration || 10;
-        setCurrentTime(formatTime(cur));
-        setDuration(formatTime(dur));
-        setProgress(Math.min(100, (cur / dur) * 100));
-      }
-    };
-
-    const handleLoadedMetadata = () => {
-      if (video && video.duration) {
-        setDuration(formatTime(video.duration));
-      }
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
-
-    return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-    };
   }, []);
 
   if (!isVisible) return null;
@@ -200,45 +166,7 @@ export default function StartupVideo({ onComplete }: StartupVideoProps) {
         </button>
       </div>
 
-      {/* CENTER NOTIFICATION IF BROWSER RESTRICTED UNMUTED AUTOPLAY */}
-      {autoplayBlocked && (
-        <div
-          onClick={handleContainerClick}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer animate-pulse"
-        >
-          <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-amber-950/90 border-2 border-amber-500/80 backdrop-blur-2xl text-amber-200 font-mono text-xs font-bold shadow-2xl shadow-amber-950/80 hover:scale-105 transition-transform">
-            <Volume2 className="w-5 h-5 text-amber-400 animate-bounce" />
-            <span>CLICK ANYWHERE TO UNMUTE AUDIO</span>
-          </div>
-        </div>
-      )}
 
-      {/* BOTTOM HUD TELEMETRY & PROGRESS BAR */}
-      <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-12 md:right-12 z-30 pointer-events-none">
-        <div className="flex flex-col gap-2 max-w-4xl mx-auto">
-          {/* Status Bar */}
-          <div className="flex items-center justify-between font-mono text-[11px] text-slate-300 tracking-wider">
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-              <Shield className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-bold text-amber-300">DRISHTI-X // SYSTEM BRIEFING</span>
-              <span className="hidden sm:inline text-slate-500">|</span>
-              <span className="hidden sm:inline text-slate-400">DEFENCE AI VISION INTEGRITY</span>
-            </div>
-            <div className="text-amber-400 font-bold bg-black/60 px-2 py-0.5 rounded border border-slate-800">
-              {currentTime} / {duration}
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="w-full h-1.5 bg-slate-900/80 rounded-full overflow-hidden border border-slate-800/80 shadow-inner">
-            <div
-              className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-yellow-300 transition-all duration-200 rounded-full"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-      </div>
 
       {/* TACTICAL HUD CORNER ACCENTS */}
       <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-amber-500/40 pointer-events-none" />
