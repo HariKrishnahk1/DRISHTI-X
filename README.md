@@ -224,7 +224,7 @@ This project was built with dedicated ownership across six key engineering domai
   <tr>
     <td align="center" width="16.6%">
       <a href="https://github.com/HariKrishnahk1">
-        <img src="https://avatars.githubusercontent.com/u/HariKrishnahk1?v=4" width="80px;" alt="Hari Krishna"/><br />
+        <img src="https://avatars.githubusercontent.com/u/184535423?v=4" width="85px;" style="border-radius: 50%;" alt="Hari Krishna"/><br />
         <sub><b>Hari Krishna</b></sub>
       </a><br />
       <small><code>HariKrishnahk1</code></small><br />
@@ -232,7 +232,7 @@ This project was built with dedicated ownership across six key engineering domai
     </td>
     <td align="center" width="16.6%">
       <a href="https://github.com/naturehari">
-        <img src="https://avatars.githubusercontent.com/u/naturehari?v=4" width="80px;" alt="Nature Hari"/><br />
+        <img src="https://avatars.githubusercontent.com/u/216018841?v=4" width="85px;" style="border-radius: 50%;" alt="Nature Hari"/><br />
         <sub><b>Nature Hari</b></sub>
       </a><br />
       <small><code>naturehari</code></small><br />
@@ -240,7 +240,7 @@ This project was built with dedicated ownership across six key engineering domai
     </td>
     <td align="center" width="16.6%">
       <a href="https://github.com/Divya0202941">
-        <img src="https://avatars.githubusercontent.com/u/Divya0202941?v=4" width="80px;" alt="Divya"/><br />
+        <img src="https://avatars.githubusercontent.com/u/216001224?v=4" width="85px;" style="border-radius: 50%;" alt="Divya"/><br />
         <sub><b>Divya</b></sub>
       </a><br />
       <small><code>Divya0202941</code></small><br />
@@ -248,7 +248,7 @@ This project was built with dedicated ownership across six key engineering domai
     </td>
     <td align="center" width="16.6%">
       <a href="https://github.com/deepikadp30">
-        <img src="https://avatars.githubusercontent.com/u/deepikadp30?v=4" width="80px;" alt="Deepika"/><br />
+        <img src="https://avatars.githubusercontent.com/u/215997565?v=4" width="85px;" style="border-radius: 50%;" alt="Deepika"/><br />
         <sub><b>Deepika</b></sub>
       </a><br />
       <small><code>deepikadp30</code></small><br />
@@ -256,7 +256,7 @@ This project was built with dedicated ownership across six key engineering domai
     </td>
     <td align="center" width="16.6%">
       <a href="https://github.com/kumaranbk48-code">
-        <img src="https://avatars.githubusercontent.com/u/kumaranbk48-code?v=4" width="80px;" alt="Bharathkumaran"/><br />
+        <img src="https://avatars.githubusercontent.com/u/263678552?v=4" width="85px;" style="border-radius: 50%;" alt="Bharathkumaran"/><br />
         <sub><b>Bharathkumaran</b></sub>
       </a><br />
       <small><code>kumaranbk48-code</code></small><br />
@@ -264,7 +264,7 @@ This project was built with dedicated ownership across six key engineering domai
     </td>
     <td align="center" width="16.6%">
       <a href="https://github.com/gowsalyaveerappan01-aids">
-        <img src="https://avatars.githubusercontent.com/u/gowsalyaveerappan01-aids?v=4" width="80px;" alt="Gowsalya"/><br />
+        <img src="https://avatars.githubusercontent.com/u/270987115?v=4" width="85px;" style="border-radius: 50%;" alt="Gowsalya"/><br />
         <sub><b>Gowsalya</b></sub>
       </a><br />
       <small><code>gowsalyaveerappan01-aids</code></small><br />
