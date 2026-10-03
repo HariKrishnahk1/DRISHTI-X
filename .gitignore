@@ -1,0 +1,62 @@
+# Environments and Secrets
+.env
+.env*.local
+*.pem
+*.key
+*.cert
+.keys/
+**/.keys/
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js & Next.js
+frontend/node_modules/
+node_modules/
+frontend/.next/
+.next/
+frontend/out/
+out/
+frontend/build/
+build/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Database & SQLite files
+*.db
+*.sqlite
+*.sqlite3
+drishti_x.db
+
+# Storage & Uploads generated at runtime
+data/uploads/
+**/data/uploads/
+backend/data/
+backend/models/
+storage/uploads/
+
+# Large root media / captures
+drishthi x.mp4
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
